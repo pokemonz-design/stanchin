@@ -61,12 +61,12 @@
           </h3>
 
           <p class="tax-recon-panel-text">
-             Вы доказываете, кто на самом деле поставил товар или выполнил работы, и на каких условиях. Расчет строится по документам реального исполнителя: его ценам, его наценке, его налогам. 
-          </p>
- <p class="tax-recon-panel-text">
-            Этот способ позволяет учесть и расходы по налогу на прибыль, и вычеты НДС, но его трудно реализовать без документов реального исполнителя.
+            Вы доказываете, кто на самом деле поставил товар или выполнил работы, и на каких условиях. Расчет строится по документам реального исполнителя: его ценам, его наценке, его налогам.
           </p>
 
+          <p class="tax-recon-panel-text">
+            Этот способ позволяет учесть и расходы по налогу на прибыль, и вычеты НДС, но его трудно реализовать без документов реального исполнителя.
+          </p>
         </section>
 
         <section
@@ -82,14 +82,12 @@
           </h3>
 
           <p class="tax-recon-panel-text">
-            Вы сравниваете стоимость спорных товаров или услуг с рыночными аналогами и доказываете, что заплатили столько же, сколько платят другие компании в сопоставимых условиях. 
+            Вы сравниваете стоимость спорных товаров или услуг с рыночными аналогами и доказываете, что заплатили столько же, сколько платят другие компании в сопоставимых условиях.
           </p>
-  <p class="tax-recon-panel-text">
+
+          <p class="tax-recon-panel-text">
             Этот подход дает возможность учесть расходы по налогу на прибыль, однако не позволяет применить вычеты НДС. Бремя доказывания полностью на налогоплательщике.
           </p>
-
-
-         
         </section>
 
         <section
@@ -107,12 +105,10 @@
           <p class="tax-recon-panel-text">
             Вы показываете, какой объем сырья, материалов или комплектующих был объективно необходим для производства того объема продукции, который вы отгрузили. И доказываете, что без спорных закупок этот объем физически не мог быть выпущен.
           </p>
-   <p class="tax-recon-panel-text">
 
-           Этот способ позволяет учесть как расходы по налогу на прибыль, так и вычеты НДС. Неприменим в отраслях, где основные расходы приходятся на работы, а не на материалы.
+          <p class="tax-recon-panel-text">
+            Этот способ позволяет учесть как расходы по налогу на прибыль, так и вычеты НДС. Неприменим в отраслях, где основные расходы приходятся на работы, а не на материалы.
           </p>
-
-         
         </section>
       </div>
     </div>
@@ -171,7 +167,7 @@
 
   .tax-recon-layout {
     display: grid;
-    grid-template-columns: 190px 1fr;
+    grid-template-columns: 190px minmax(0, 1fr);
     gap: 18px;
     align-items: start;
   }
@@ -193,6 +189,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 10px;
     text-align: left;
     font: inherit;
@@ -257,6 +254,7 @@
   }
 
   .tax-recon-panel {
+    height: 245px;
     background: #ffffff;
     border: 1px solid rgba(202, 64, 55, 0.2);
     border-left: 6px solid #CA4037;
@@ -264,10 +262,31 @@
     padding: 24px;
     box-shadow: 0 10px 24px rgba(34, 34, 34, 0.06);
     animation: taxReconFadeIn 0.25s ease;
+
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .tax-recon-panel[hidden] {
     display: none;
+  }
+
+  .tax-recon-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .tax-recon-panel::-webkit-scrollbar-track {
+    background: #FAE8F4;
+    border-radius: 999px;
+  }
+
+  .tax-recon-panel::-webkit-scrollbar-thumb {
+    background: rgba(202, 64, 55, 0.45);
+    border-radius: 999px;
+  }
+
+  .tax-recon-panel::-webkit-scrollbar-thumb:hover {
+    background: #CA4037;
   }
 
   .tax-recon-label {
@@ -326,17 +345,21 @@
     }
 
     .tax-recon-layout {
-      grid-template-columns: 1fr;
-    }
-
-    .tax-recon-tabs {
-      flex-direction: row;
-      gap: 8px;
+      grid-template-columns: 150px minmax(0, 1fr);
+      gap: 14px;
     }
 
     .tax-recon-step {
-      justify-content: center;
-      text-align: center;
+      min-height: 48px;
+      padding: 10px;
+    }
+
+    .tax-recon-step-text {
+      font-size: 15px;
+    }
+
+    .tax-recon-panel {
+      height: 275px;
     }
   }
 
@@ -357,16 +380,30 @@
       font-size: 15px;
     }
 
-    .tax-recon-tabs {
-      flex-direction: column;
+    .tax-recon-layout {
+      grid-template-columns: 118px minmax(0, 1fr);
+      gap: 10px;
     }
 
     .tax-recon-step {
       min-height: 44px;
-      justify-content: flex-start;
+      padding: 8px;
+      gap: 7px;
+    }
+
+    .tax-recon-step-number {
+      width: 24px;
+      height: 24px;
+      flex: 0 0 24px;
+      font-size: 13px;
+    }
+
+    .tax-recon-step-text {
+      font-size: 14px;
     }
 
     .tax-recon-panel {
+      height: 310px;
       padding: 18px;
       border-radius: 16px;
     }
@@ -377,6 +414,49 @@
 
     .tax-recon-panel-text {
       font-size: 16px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .tax-recon-card {
+      padding: 14px;
+    }
+
+    .tax-recon-layout {
+      grid-template-columns: 96px minmax(0, 1fr);
+      gap: 8px;
+    }
+
+    .tax-recon-step {
+      padding: 7px;
+      gap: 6px;
+      border-radius: 12px;
+    }
+
+    .tax-recon-step-number {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      font-size: 12px;
+    }
+
+    .tax-recon-step-text {
+      font-size: 13px;
+    }
+
+    .tax-recon-panel {
+      height: 340px;
+      padding: 14px;
+      border-left-width: 4px;
+    }
+
+    .tax-recon-panel-title {
+      font-size: 18px;
+    }
+
+    .tax-recon-panel-text {
+      font-size: 15px;
+      line-height: 1.55;
     }
   }
 </style>
